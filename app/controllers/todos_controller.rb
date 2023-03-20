@@ -13,8 +13,12 @@ class TodosController < ApplicationController
         # todo = Todo.create(title:title,description:description,priority:priority)
 
         todo = Todo.create(todo_params)
+        if todo.valid?
+            render json:todo
+        else
+            render json: todo.errors
+        end
 
-        render json: todo
     end
 
     def update
