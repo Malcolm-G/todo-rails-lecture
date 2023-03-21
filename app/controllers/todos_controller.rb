@@ -14,7 +14,7 @@ class TodosController < ApplicationController
 
         todo = Todo.create(todo_params)
         if todo.valid?
-            render json:todo
+            render json:todo, serializer: TodoSerializer
         else
             render json: todo.errors
         end
